@@ -48,7 +48,7 @@ const Navbar = () => {
     <AppBar position="sticky">
       <StyledToolbar>
         <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          LAMA DEV
+          Facebook Clone
         </Typography>
         <Pets sx={{ display: { xs: "block", sm: "none" } }} />
         <Search>
@@ -56,20 +56,19 @@ const Navbar = () => {
         </Search>
         <Icons>
           <Badge badgeContent={4} color="error">
-            <Mail />
+            <Mail sx={{cursor: 'pointer'}}/>
           </Badge>
           <Badge badgeContent={2} color="error">
-            <Notifications />
+            <Notifications sx={{cursor: 'pointer'}}/>
           </Badge>
           <Avatar
-            sx={{ width: 30, height: 30 }}
+            sx={{ width: 30, height: 30, cursor: 'pointer' }}
             src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             onClick={(e) => setOpen(true)}
           />
         </Icons>
-        <UserBox onClick={(e) => setOpen(true)}>
+        <UserBox onClick={(e) => setOpen(true)} >
           <Avatar
-            sx={{ width: 30, height: 30 }}
             src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           />
           <Typography variant="subtitle1">John</Typography>
@@ -89,9 +88,9 @@ const Navbar = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My account</MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem >Profile</MenuItem>
+        <MenuItem >My account</MenuItem>
+        <MenuItem >Logout</MenuItem>
       </Menu>
     </AppBar>
   );

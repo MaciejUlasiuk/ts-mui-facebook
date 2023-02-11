@@ -87,7 +87,7 @@ import {
             <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/3.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary="Brunch this weekend?"
+            primary="Car this weekend?"
             secondary={
               <React.Fragment>
                 <Typography
@@ -98,7 +98,7 @@ import {
                 >
                   Ali Connors
                 </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
+                {" - In love with my new car! 🚗 #newride #speedlover"}
               </React.Fragment>
             }
           />
@@ -120,7 +120,9 @@ import {
                 >
                   to Scott, Alex, Jennifer
                 </Typography>
-                {" — Wish I could come, but I'm out of town this…"}
+                {" - Just had the best vacation in Hawaii! Can't wait to go back 🌴🌊 #beachlife #paradise"
+
+}
               </React.Fragment>
             }
           />
@@ -131,7 +133,7 @@ import {
             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary="Oui Oui"
+            primary="Redux!!!"
             secondary={
               <React.Fragment>
                 <Typography
@@ -142,7 +144,7 @@ import {
                 >
                   Sandra Adams
                 </Typography>
-                {' — Do you have Paris recommendations? Have you ever…'}
+                {' — I hate redux toolkit!!! It`s so hard...'}
               </React.Fragment>
             }
           />

@@ -10,13 +10,13 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-const Post = () => {
+const Post = ({}) => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-            R
+          <Avatar sx={{ bgcolor: "cyan" }} aria-label="recipe">
+            Adm
           </Avatar>
         }
         action={
@@ -24,20 +24,18 @@ const Post = () => {
             <MoreVert />
           </IconButton>
         }
-        title="John Doe"
+        title="Administration"
         subheader="September 14, 2022"
       />
       <CardMedia
         component="img"
         height="20%"
-        image="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        image="https://imageio.forbes.com/specials-images/imageserve/577c129fd7c6ee6a37c42b99/This-is-the-Milky-Way-from-Concordia-Camp--in-Pakistan-s-Karakoram-Range-/960x0.jpg?format=jpg&width=960"
         alt="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          Hello feel free to test this FacebookClone! In the bottomleft corner you can add new post!
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

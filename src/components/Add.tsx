@@ -39,7 +39,7 @@ const Add = () => {
   return (
     <>
       <Tooltip
-        onClick={(e) => setOpen(true)}
+        onClick={() => setOpen(true)}
         title="Delete"
         sx={{
           position: "fixed",
@@ -73,7 +73,7 @@ const Add = () => {
               src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               sx={{ width: 30, height: 30 }}
             />
-            <Typography fontWeight={500} variant="p">
+            <Typography fontWeight={500} variant="subtitle1">
               John Doe
             </Typography>
           </UserBox>
