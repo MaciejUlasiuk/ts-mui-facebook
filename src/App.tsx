@@ -5,6 +5,8 @@ import { Box, createTheme, PaletteMode, Stack, ThemeProvider } from "@mui/materi
 import Navbar from "./components/Navbar";
 import Add from "./components/Add";
 import { useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 function App() {
   const [mode, setMode] = useState<PaletteMode>("light");
@@ -15,6 +17,7 @@ function App() {
     },
   });
   return (
+    <Provider store={store}>
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
         <Navbar />
@@ -26,6 +29,7 @@ function App() {
         <Add />
       </Box>
     </ThemeProvider>
+    </Provider>
   );
 }
 
