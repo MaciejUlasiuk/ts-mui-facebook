@@ -17,6 +17,8 @@ const Feed = () => {
           <Skeleton variant="text" height={20} />
           <Skeleton variant="text" height={20} />
           <Skeleton variant="rectangular" height={300} />
+          <Skeleton variant="rectangular" height={300} />
+
         </Stack>
       ) : (
         <>
