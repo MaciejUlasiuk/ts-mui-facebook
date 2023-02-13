@@ -1,10 +1,6 @@
-import { AppBar, Box, ListItemButton, ListItemIcon, Stack, Switch, ThemeProvider, Typography, PaletteMode, createTheme, ListItem, Paper, TextField, Button} from "@mui/material";
-import { width } from "@mui/system";
+import {  Box,  Stack,  ThemeProvider, Typography, PaletteMode, createTheme,  Paper, TextField, Button} from "@mui/material";
 import { useState } from "react";
-import Add from "../components/Add";
-import Feed from "../components/Feed";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
-import Rightbar from "../components/Rightbar";
 
 const LoginPage = () => {
     const [mode, setMode] = useState<PaletteMode>("light");
