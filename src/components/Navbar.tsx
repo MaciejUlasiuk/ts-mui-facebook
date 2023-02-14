@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -44,6 +45,8 @@ const UserBox = styled(Box)(({ theme }) => ({
 }));
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  
+  const navigate = useNavigate()
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -90,7 +93,7 @@ const Navbar = () => {
       >
         <MenuItem >Profile</MenuItem>
         <MenuItem >My account</MenuItem>
-        <MenuItem >Logout</MenuItem>
+        <MenuItem onClick={()=>navigate('/')}>Logout</MenuItem>
       </Menu>
     </AppBar>
   );
