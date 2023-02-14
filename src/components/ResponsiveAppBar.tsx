@@ -91,7 +91,7 @@ function ResponsiveAppBar({setMode, mode}: IProps) {
                 <ListItemIcon>
                   <ModeNight />
                 </ListItemIcon>
-                <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}/>
+                <Switch onChange={()=>setMode(mode === "light" ? "dark" : "light")}/>
               </ListItemButton>
             </ListItem>
           </Box>
