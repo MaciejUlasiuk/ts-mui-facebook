@@ -44,8 +44,8 @@ function ResponsiveAppBar({setMode, mode}: IProps) {
     <AppBar position="sticky" >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <FacebookRounded sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flexGrow: 1 }}>
+          <FacebookRounded sx={{ display:  'flex' , mr: 1 }} />
+          <Box sx={{display: { xs: 'none', md: 'flex' }, alignItems: 'center', justifyContent: 'flex-end', flexGrow: 1 }}>
           <Typography
             variant="h6"
             noWrap
