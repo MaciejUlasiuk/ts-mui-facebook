@@ -7,7 +7,10 @@ import MainPage from './MainPage'
 import LoginPage from './pages/LoginPage'
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<MainPage/>} />
+    <>
+    <Route path='/' element={<LoginPage/>}/>
+    <Route path='MainPage' element={<MainPage/>} />
+    </>
   )
 )
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

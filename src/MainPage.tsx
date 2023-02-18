@@ -4,10 +4,17 @@ import Rightbar from "./components/Rightbar";
 import { Box, createTheme, PaletteMode, Stack, ThemeProvider } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Add from "./components/Add";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const modeFromLocalStorage =
+  JSON.parse(localStorage.getItem("mode") as string) || "dark";
 
 function MainPage() {
-  const [mode, setMode] = useState<PaletteMode>("light");
+  const [mode, setMode] = useState<PaletteMode>(modeFromLocalStorage);
+
+  useEffect(() => {
+    localStorage.setItem("mode", JSON.stringify(mode));
+  }, [mode]);
 
   const darkTheme = createTheme({
     palette: {

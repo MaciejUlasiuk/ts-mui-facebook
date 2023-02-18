@@ -9,34 +9,48 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, redirect } from "react-router-dom";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import { loginUser } from "../features/userSlice";
 
+const modeFromLocalStorage =
+  JSON.parse(localStorage.getItem("mode") as string) || "dark";
+  
 const LoginPage = () => {
-  const [mode, setMode] = useState<PaletteMode>("light");
-  const [login, setLogin] = useState('')
-  const [password, setPassword] = useState('')
-  const [errorLoginState, setErrorLoginState] = useState(false)
-  const [errorPassState, setErrorPassState] = useState(false)
+  const [mode, setMode] = useState<PaletteMode>(modeFromLocalStorage);
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorLoginState, setErrorLoginState] = useState(false);
+  const [errorPassState, setErrorPassState] = useState(false);
+  const [loginTip, setLoginTip] = useState("");
+  const [passTip, setPassTip] = useState("");
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const handleLoginInput = (e: ChangeEvent<HTMLInputElement>) => setLogin(e.target.value)
-  const handlePasswordInput = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)
+  useEffect(() => {
+    localStorage.setItem("mode", JSON.stringify(mode));
+    console.log(mode)
+  }, [mode]);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLoginInput = (e: ChangeEvent<HTMLInputElement>) =>
+    setLogin(e.target.value);
+  const handlePasswordInput = (e: ChangeEvent<HTMLInputElement>) =>
+    setPassword(e.target.value);
 
   const handleLogin = (login: string, password: string) => {
-    if(login!=='Admin') setErrorLoginState(true)
-    if(password!=='Admin') setErrorPassState(true)
-    else
-    {
-      console.log('it works')
-      navigate("/MainPage")
-
+    if (login !== "Admin") {
+      setErrorLoginState(true);
+      setLoginTip("Login is Admin");
     }
-  }
+    if (password !== "Admin") {
+      setErrorPassState(true);
+      setPassTip("Password is Admin");
+    } else {
+      navigate("/MainPage");
+    }
+  };
   const darkTheme = createTheme({
     palette: {
       mode: mode,
@@ -50,22 +64,28 @@ const LoginPage = () => {
           <Stack
             direction="row"
             spacing={2}
+            paddingRight={{xs:4,md:10}}
             p={4}
-            paddingRight={10}
             justifyContent="space-around"
             alignContent="center"
             alignItems="center"
             minHeight="90vh"
           >
-            <Box flex={1} p={4} marginBottom={10} marginLeft={7} sx={{display: {xs: 'none', lg: "block"}}}>
+            <Box
+              flex={1}
+              p={4}
+              marginBottom={10}
+              marginLeft={7}
+              sx={{ display: { xs: "none", lg: "block" } }}
+            >
               <Typography variant="h2" color="blue" marginBottom={2}>
                 Facebook
               </Typography>
-              <Typography variant="h4" width={500}>
+              <Typography variant="h4" width={{xs: 300, md: 500}}>
                 Connect with friends and the world around you on Facebook.
               </Typography>
             </Box>
-            <Box>
+            <Box m={0}>
               <Paper
                 elevation={4}
                 sx={{
@@ -77,7 +97,7 @@ const LoginPage = () => {
                   flexDirection: "column",
                   gap: 2,
                   minHeight: 400,
-                  minWidth: 550,
+                  minWidth: {xs: 250, md: 550 }
                 }}
               >
                 <Typography variant="h3" m={5}></Typography>
@@ -89,6 +109,7 @@ const LoginPage = () => {
                   error={errorLoginState}
                   value={login}
                   onChange={handleLoginInput}
+                  helperText={loginTip}
                 />
                 <TextField
                   id="outlined-basic"
@@ -99,12 +120,13 @@ const LoginPage = () => {
                   value={password}
                   onChange={handlePasswordInput}
                   error={errorPassState}
+                  helperText={passTip}
                 />
                 <Button
                   variant="outlined"
                   size="large"
                   sx={{ minWidth: "50%", marginTop: 4 }}
-                  onClick={()=>handleLogin(login, password)}
+                  onClick={() => handleLogin(login, password)}
                 >
                   Log in
                 </Button>
