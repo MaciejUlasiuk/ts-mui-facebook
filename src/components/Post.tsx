@@ -10,13 +10,14 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-const Post = ({}) => {
+import { Post } from "../types/types";
+const Post = ({id, image, likes, text,publishDate, owner}: Post) => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "cyan" }} aria-label="recipe">
-            Adm
+            {owner.firstName.slice(0,2)}
           </Avatar>
         }
         action={
