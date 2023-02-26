@@ -19,18 +19,23 @@ import {
     Switch,
   } from "@mui/material";
   import React from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../app/store";
+import { setMode } from "../features/modeSlice";
   
-  interface IProps {
-    mode: PaletteMode
-    setMode: React.Dispatch<React.SetStateAction<PaletteMode>>
-  }
-  const Sidebar = ({mode,setMode}: IProps) => {
+  
+  const Sidebar = () => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const mode = useSelector((state: RootState)=> state.modeSlice.mode)
     return (
       <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
         <Box position="fixed">
           <List>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#home">
+              <ListItemButton onClick={()=>navigate('/')}>
                 <ListItemIcon>
                   <Home />
                 </ListItemIcon>
@@ -38,7 +43,7 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton onClick={()=>navigate('/Pages')}>
                 <ListItemIcon>
                   <Article />
                 </ListItemIcon>
@@ -46,7 +51,7 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton onClick={()=>navigate('/Groups')}>
                 <ListItemIcon>
                   <Group />
                 </ListItemIcon>
@@ -54,7 +59,7 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton onClick={()=>navigate('/Marketplace')}>
                 <ListItemIcon>
                   <Storefront />
                 </ListItemIcon>
@@ -62,7 +67,7 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton onClick={()=>navigate('/FriendsPage')}>
                 <ListItemIcon>
                   <Person />
                 </ListItemIcon>
@@ -70,7 +75,7 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton onClick={()=>navigate('/Settings')}>
                 <ListItemIcon>
                   <Settings />
                 </ListItemIcon>
@@ -78,7 +83,7 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton onClick={()=>navigate('/Profile')}>
                 <ListItemIcon>
                   <AccountBox />
                 </ListItemIcon>
@@ -86,11 +91,11 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton >
                 <ListItemIcon>
                   <ModeNight />
                 </ListItemIcon>
-                <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}/>
+                <Switch onChange={()=>{mode === 'dark' ? dispatch(setMode('light')) : dispatch(setMode('dark')) }}/>
               </ListItemButton>
             </ListItem>
           </List>
