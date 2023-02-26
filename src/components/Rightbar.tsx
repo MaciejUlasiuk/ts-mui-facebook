@@ -12,15 +12,17 @@ import {
     Typography,
   } from "@mui/material";
   import React from "react";
+import { useNavigate } from "react-router-dom";
   
   const Rightbar = () => {
+    const navigate = useNavigate()
     return (
       <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
         <Box position="fixed" width={300}>
           <Typography variant="h6" fontWeight={100}>
             Online Friends
           </Typography>
-          <AvatarGroup max={7}>
+          <AvatarGroup max={7} sx={{cursor: 'pointer'}} onClick={()=>navigate('/FriendsPage')}>
             <Avatar
               alt="Remy Sharp"
               src="https://material-ui.com/static/images/avatar/1.jpg"
