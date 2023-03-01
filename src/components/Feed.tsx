@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../app/store";
 import { fetchPosts } from "../features/postsSlice";
+import { IPost, IPosts } from "../types/types";
 import Post from "./Post";
 import Posts from "./Posts";
 
@@ -11,7 +12,7 @@ const Feed = () => {
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch<AppDispatch>()
-  const posts = useSelector((state: RootState)=> state.postsSlice.posts)
+  const posts: IPosts = useSelector((state: RootState)=> state.postsSlice.posts)
   const postsStatus = useSelector((state: RootState)=> state.postsSlice.status)
   const postsError = useSelector((state: RootState)=> state.postsSlice.error)
 
@@ -35,7 +36,7 @@ const Feed = () => {
         </Stack>
       ) : (
         <>
-        {postsStatus === 'succeeded' ? <Posts posts={posts} /> : null }
+        {postsStatus === 'succeeded' ? <Posts/> : null }
           
         </>
       )}
