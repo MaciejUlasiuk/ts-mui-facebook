@@ -1,6 +1,7 @@
 import { Favorite, FavoriteBorder, MoreVert, Share } from "@mui/icons-material";
 import {
   Avatar,
+  Badge,
   Card,
   CardActions,
   CardContent,
@@ -10,13 +11,13 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import { Post } from "../types/types";
-const Post = ({id, image, likes, text,publishDate, owner}: Post) => {
+import { IPost } from "../types/types";
+const Post = ({id, image, likes, text,publishDate, owner}: IPost) => {
   return (
     <Card sx={{ margin: 5 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: "cyan" }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: "cyan" }} aria-label="recipe" src={owner.picture} >
             {owner.firstName.slice(0,2)}
           </Avatar>
         }
@@ -25,26 +26,28 @@ const Post = ({id, image, likes, text,publishDate, owner}: Post) => {
             <MoreVert />
           </IconButton>
         }
-        title="Administration"
-        subheader="September 14, 2022"
+        title={`${owner.firstName} ${owner.lastName}`}
+        subheader={publishDate}
       />
       <CardMedia
         component="img"
         height="20%"
-        image="https://imageio.forbes.com/specials-images/imageserve/577c129fd7c6ee6a37c42b99/This-is-the-Milky-Way-from-Concordia-Camp--in-Pakistan-s-Karakoram-Range-/960x0.jpg?format=jpg&width=960"
+        image={image}
         alt="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Hello feel free to test this FacebookClone! In the bottomleft corner you can add new post!
+          {text}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
+        <Badge badgeContent={likes} color="error">
           <Checkbox
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite sx={{ color: "red" }} />}
           />
+          </Badge>
         </IconButton>
         <IconButton aria-label="share">
           <Share />
