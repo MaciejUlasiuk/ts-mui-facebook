@@ -1,8 +1,6 @@
+
 export interface IPosts {
     data: (IPost)[] | []  ;
-    total: number;
-    page: number;
-    limit: number;
   }
   export interface IPost {
     id: string;
