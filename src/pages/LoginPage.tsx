@@ -12,6 +12,7 @@ import {
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, redirect } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 import { loginUser } from "../features/userSlice";
 
@@ -48,19 +49,14 @@ const LoginPage = () => {
       setErrorPassState(true);
       setPassTip("Password is Admin");
     } else {
-      navigate("/MainPage");
+      dispatch(loginUser(true))
     }
   };
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
+  
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
         <Box bgcolor={"background.default"} color={"text.primary"}>
-          <ResponsiveAppBar setMode={setMode} mode={mode} />
+          <Navbar/>
           <Stack
             direction="row"
             spacing={2}
@@ -137,7 +133,6 @@ const LoginPage = () => {
             </Box>
           </Stack>
         </Box>
-      </ThemeProvider>
     </>
   );
 };
