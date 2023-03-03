@@ -2,17 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { axiosInstance } from "../helpers/apiInstance";
 import { IPost, IPosts } from "../types/types";
-interface IUser {
+interface IPostsData {
     posts: IPosts,
     status: 'idle' | 'loading' | 'succeeded' | 'failed',
     error: Error | null | unknown
 }
-const initialState: IUser = {
+const initialState: IPostsData = {
     posts: {
          data: [],
-         total: 0,
-         page: 0,
-         limit: 10
     },
     status: 'idle',
     error: null,
@@ -33,6 +30,20 @@ export const postsSlice = createSlice({
         setPosts: (state, action: PayloadAction<IPosts> ) =>{
             state.posts = action.payload
         },
+        addPosts: (state, action: PayloadAction<IPost>) => {
+            state.posts.data = [...state.posts.data, action.payload]
+        },
+        removePosts: (state, action: PayloadAction<Number>) => {
+            const index = action.payload;
+            state.posts.data = state.posts.data.filter((post, i) => i !== index);
+        },
+        addLike: (state, action: PayloadAction<Number>) => {
+            const index = action.payload;
+            state.posts.data = state.posts.data.map((post, i) => {
+                if(index===i) post.likes +=1;
+                return post
+            })
+        }
     },
     extraReducers(builder) {
         builder
