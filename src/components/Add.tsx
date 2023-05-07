@@ -36,6 +36,11 @@ const UserBox = styled(Box)({
 
 const Add = () => {
   const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(false)
+    
+  }
   return (
     <>
       <Tooltip
@@ -74,7 +79,7 @@ const Add = () => {
               sx={{ width: 30, height: 30 }}
             />
             <Typography fontWeight={500} variant="subtitle1">
-              John Doe
+              Admin
             </Typography>
           </UserBox>
           <TextField
@@ -96,7 +101,7 @@ const Add = () => {
             variant="contained"
             aria-label="outlined primary button group"
           >
-            <Button>Post</Button>
+            <Button onClick={handleClick}>Post</Button>
             <Button sx={{ width: "100px" }}>
               <DateRange />
             </Button>
